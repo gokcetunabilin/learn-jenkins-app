@@ -68,8 +68,15 @@ pipeline {
                     node_modules/.bin/netlify --version
                     echo "Site Id: " $NETLIFY_SITE_ID
                     node_modules/.bin/netlify status
-                    node_modules/.bin/netlify status --dir=build
+                    node_modules/.bin/netlify --dir=build
                 '''
+            }
+        }
+         stage('Approval for Deploy prod') {
+            steps {
+                timeout(time: 1, unit: 'MINUTES') {
+                    input message: 'Ready to deploy?', ok: 'Yes, deploy'
+                }
             }
         }
         stage('Deploy prod') {
@@ -85,7 +92,7 @@ pipeline {
                     node_modules/.bin/netlify --version
                     echo "Site Id: " $NETLIFY_SITE_ID
                     node_modules/.bin/netlify status
-                    node_modules/.bin/netlify status --dir=build --prod
+                    node_modules/.bin/netlify --dir=build --prod
                 '''
             }
         }
