@@ -68,7 +68,7 @@ pipeline {
                     node_modules/.bin/netlify --version
                     echo "Site Id: " $NETLIFY_SITE_ID
                     node_modules/.bin/netlify status
-                    node_modules/.bin/netlify --dir=build
+                    node_modules/.bin/netlify deploy --dir=build
                 '''
             }
         }
@@ -92,7 +92,7 @@ pipeline {
                     node_modules/.bin/netlify --version
                     echo "Site Id: " $NETLIFY_SITE_ID
                     node_modules/.bin/netlify status
-                    node_modules/.bin/netlify --dir=build --prod
+                    node_modules/.bin/netlify deploy --dir=build --prod
                 '''
             }
         }
