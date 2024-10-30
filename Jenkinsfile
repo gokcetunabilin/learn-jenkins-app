@@ -30,10 +30,14 @@ pipeline {
             steps {
                 sh '''
                     test -f public/index.html
-                    cd src
-                    npm test App.test.js
+                    npm test
                 '''
             }
+        }
+    }
+    post {
+        always {
+            junit 'test-results/junit.xml'
         }
     }
 }
