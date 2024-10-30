@@ -50,6 +50,7 @@ pipeline {
                 sh '''
                     npm install netlify-cli
                     node_modules/.bin/netlify --version
+                    echo "Site Id: " $NETLIFY_SITE_ID
                     node_modules/.bin/netlify status
                 '''
             }
