@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         NETLIFY_SITE_ID = 'ca96e722-6690-47aa-a994-aa7fefabcdd8'
-        NETLIFY_AUTH_TOKEN = credentials('netlify-token')
+     //   NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
 
     stages {
@@ -39,7 +39,7 @@ pipeline {
                 '''
             }
         }
-
+/*
         stage('Deploy Staging') {
             agent {
                 docker {
@@ -80,6 +80,6 @@ pipeline {
                     node_modules/.bin/netlify deploy --dir=build --prod
                 '''
             }
-        }
+        }*/
     }
 }
